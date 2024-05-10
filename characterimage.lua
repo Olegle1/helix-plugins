@@ -36,8 +36,11 @@ if ( ix.gui.characterMenu ) then
 
     if ( IsValid(ix.gui.characterMenu) ) then
         ix.gui.characterMenu.Paint = function(s, w, h)
-            surface.SetDrawColor(PLUGIN.images[randomImageID][2] or color_white)
-            surface.SetMaterial(Material(PLUGIN.images[randomImageID][1]))
+            local img = PLUGIN.images[randomImageID][1]
+            local drawCol = PLUGIN.images[randomImageID][2] or color_white
+
+            surface.SetDrawColor(drawCol)
+            surface.SetMaterial(img)
             surface.DrawTexturedRect(0, 0, w, h)
 
             oldFunc(s, w, h)
