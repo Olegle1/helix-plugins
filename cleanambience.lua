@@ -2,7 +2,7 @@ local PLUGIN = PLUGIN
 
 PLUGIN.name = "Ambience Removal"
 PLUGIN.description = "Removes in-game ambience from the map."
-PLUGIN.author = "eon"
+PLUGIN.author = "eon (bloodycop)"
 PLUGIN.license = [[
 Copyright 2024 eon (bloodycop)
 
