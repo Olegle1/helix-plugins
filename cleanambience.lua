@@ -24,21 +24,17 @@ ix.lang.AddTable("english", {
 
 if ( SERVER ) then
     function PLUGIN:InitPostEntity()
+        if not ( ix.config.Get("removeAmbience", true) ) then
+            return 
+        end
+        
         timer.Simple(1 / 3, function()
-            if not ( ix.config.Get("removeAmbience", true) ) then
-                return 
-            end
-            
-            for k, v in ipairs(ents.FindByClass("ambient_generic")) do
-                v:Remove()
-            end
-
-            for k, v in ipairs(ents.FindByClass("env_soundscape")) do
-                v:Remove()
-            end
-
-            for k, v in ipairs(ents.FindByClass("env_soundscape_proxy")) do
-                v:Remove()
+            for _, entity in ents.Iterator() do
+                local class = entity:GetClass()
+                    
+            	if ( class == "ambient_generic" or class == "env_soundscape" or class == "env_soundscape_proxy" ) then
+            		entity:Remove()
+            	end
             end
         end)
     end
