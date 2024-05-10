@@ -7,7 +7,7 @@ PLUGIN.description = "Gives your selected flags to players when they first join.
 PLUGIN.flagList = {}
 
 for k, v in SortedPairs(ix.flag.list) do
-    ix.config.Add("Flag: " .. k, false, v.description, function(bValue)
+    ix.config.Add("autoflag_" .. k, false, v.description, function(bValue)
         if ( bValue ) then
             PLUGIN.flagList[k] = true
 
@@ -31,6 +31,12 @@ for k, v in SortedPairs(ix.flag.list) do
         end
     end, {
         category = "AutoFlag"
+    })
+
+    ix.lang.AddTable("english", {
+        ["optAutoflag_" .. k] = "Auto Flag: " .. k,
+        ["optdAutoflag_" .. k] = "Whether or not to give the " .. k .. " flag to players automatically."
+
     })
 end
 
