@@ -23,18 +23,26 @@ ix.lang.AddTable("english", {
 })
 
 if ( SERVER ) then
-    function PLUGIN:InitPostEntity()
-        if not ( ix.config.Get("removeAmbience", true) ) then
-            return 
-        end
-        
+    local ambienceEnts = {
+        ["ambient_generic"] = true,
+        ["env_soundscape"] = true,
+        ["env_soundscape_proxy"] = true
+    }
+
+    function PLUGIN:InitPostEntity()    
         timer.Simple(1 / 3, function()
+            if not ( ix.config.Get("removeAmbience", true) ) then
+                return 
+            end
+
             for _, entity in ents.Iterator() do
                 local class = entity:GetClass()
                     
-            	if ( class == "ambient_generic" or class == "env_soundscape" or class == "env_soundscape_proxy" ) then
-            		entity:Remove()
+            	if not ( ambienceEnts[class] ) then
+            		continue
             	end
+
+                entity:Remove()
             end
         end)
     end
