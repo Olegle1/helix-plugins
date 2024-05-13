@@ -35,14 +35,10 @@ if ( SERVER ) then
                 return 
             end
 
-            for _, entity in ents.Iterator() do
-                local class = entity:GetClass()
-                    
-            	if not ( ambienceEnts[class] ) then
-            		continue
-            	end
-
-                entity:Remove()
+            for index, class in ipairs(table.GetKeys(ambienceEnts)) do
+                for _, entity in ipairs(ents.FindByClass(class)) do
+                    entity:Remove()
+                end
             end
         end)
     end
