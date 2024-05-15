@@ -24,9 +24,9 @@ ix.lang.AddTable("english", {
 
 if ( SERVER ) then
     local ambienceEnts = {
-        ["ambient_generic"] = true,
-        ["env_soundscape"] = true,
-        ["env_soundscape_proxy"] = true
+        "ambient_generic",
+        "env_soundscape",
+        "env_soundscape_proxy"
     }
 
     function PLUGIN:InitPostEntity()    
@@ -35,7 +35,7 @@ if ( SERVER ) then
                 return 
             end
 
-            for index, class in ipairs(table.GetKeys(ambienceEnts)) do
+            for index, class in ipairs(ambienceEnts) do
                 for _, entity in ipairs(ents.FindByClass(class)) do
                     entity:Remove()
                 end
