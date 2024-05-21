@@ -20,7 +20,7 @@ for k, v in SortedPairs(ix.flag.list) do
             PLUGIN.flagList[k] = true
 
             if ( SERVER ) then
-                for k2, v2 in ipairs(player.GetAll()) do
+                for k2, v2 in player.Iterator()
                     local char = v2:GetChar()
 
                     if not ( char ) then
