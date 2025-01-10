@@ -1,4 +1,6 @@
-PLUGIN.name = "Bars"
+local PLUGIN = PLUGIN
+
+PLUGIN.name = "Toggle Helix Bars"
 PLUGIN.author = "eon (bloodycop)"
 PLUGIN.descripton = "Adds a config to disable bars"
 PLUGIN.license = [[
@@ -12,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ]]
 
 
-ix.config.Add("shouldHideBars", true, "hide bars", nil,{
+ix.config.Add("shouldHideBars", true, "Should the default Helix Bars be disabled", nil,{
   category = "Appearance"
 })
 
